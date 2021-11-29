@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ShoppingCart 
 {
-private Integer total_amount;
+	private Integer total_amount;
+	
+	private Integer total_amount_with_discount;	
 	
 	private Integer total_discount;
 	
-	private List<ProductResponse> productsResponse;
-	
-	private Integer total_amount_with_discount;	
+	private List<ProductResponse> productsResponse;	
 	
 	public ShoppingCart() {}
 	
