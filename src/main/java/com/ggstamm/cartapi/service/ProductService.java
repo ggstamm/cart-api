@@ -14,16 +14,16 @@ import com.ggstamm.cartapi.util.JsonParser;
 
 @Service
 public class ProductService {
-	public List<ProductResponse> getProductListFromIds(ShoppingList[] shoppingList) throws FileNotFoundException
+	public List<ProductResponse> getProductListFromIds(ShoppingList shoppingList) throws FileNotFoundException
 	{
 		HashMap<Integer, Product> productsHash = getProductsDatabase();
 		List<ProductResponse> productsResponseList = new ArrayList<>();
 		Product product = new Product();
 		
-		for(int iteration = 0; iteration < shoppingList.length; iteration++)
+		for(int iteration = 0; iteration < shoppingList.getProducts().size(); iteration++)
 		{
-			product = productsHash.get(shoppingList[iteration].getId());
-			productsResponseList.add(new ProductResponse(product, shoppingList[iteration].getQuantity()));
+			product = productsHash.get(shoppingList.getProducts().get(iteration).getId());
+			productsResponseList.add(new ProductResponse(product, (shoppingList.getProducts().get(iteration).getQuantity())));
 		}	
 		
 		return productsResponseList;

@@ -1,36 +1,16 @@
 package com.ggstamm.cartapi.entity;
 
+import java.util.List;
+
 public class ShoppingList 
 {
-	private int id;
-	
-	private int quantity;
-	
-	public ShoppingList() {}
-	
-	public ShoppingList(int id, int quantity) 
-	{
-		setId(id);
-		setQuantity(quantity);
+	private List<ShoppingItem> products;
+
+	public List<ShoppingItem> getProducts() {
+		return products;
 	}
 
-	public int getId() 
-	{
-		return id;
-	}
-
-	public void setId(int id) 
-	{
-		this.id = id;
-	}
-
-	public int getQuantity() 
-	{
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) 
-	{
-		this.quantity = quantity;
-	}
+	public void setProducts(List<ShoppingItem> products) {
+		this.products = products;
+	}	
 }

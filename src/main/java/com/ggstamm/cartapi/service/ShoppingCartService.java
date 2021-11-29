@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ggstamm.cartapi.entity.ShoppingCart;
 import com.ggstamm.cartapi.entity.ShoppingList;
+import com.ggstamm.cartapi.util.JsonParser;
 
 @Service
 public class ShoppingCartService 
@@ -14,10 +15,16 @@ public class ShoppingCartService
 	@Autowired
 	ProductService productService;
 	
-	public ShoppingCart newShoppingCartFromShoppingList(ShoppingList[] shoppingList) throws FileNotFoundException
+	public ShoppingCart newShoppingCartFromShoppingList(String payload) throws FileNotFoundException
 	{
+		ShoppingList shoppingList = getShoppingListFromJson(payload);
 		ShoppingCart shoppingCart = new ShoppingCart(productService.getProductListFromIds(shoppingList));		
 		return shoppingCart;
 	}	
+	
+	private ShoppingList getShoppingListFromJson(String payload)
+	{
+		return new JsonParser().loadShoppingListFromJSON(payload);
+	}
 }
 	
